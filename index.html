@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./bootstrap.min.css" type="text/css">
+<script src='jquery.min.js'></script>
+<style>
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.title_background{
+  background-color: #3d3d3d;
+}
+li{
+  color:white;
+  cursor:pointer;
+}
+.download{
+  float:right
+}
+audio:hover, audio:focus, audio:active
+{
+-webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-moz-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-webkit-transform: scale(1.05);
+-moz-transform: scale(1.05);
+transform: scale(1.05);
+}
+audio
+{
+-webkit-transition:all 0.5s linear;
+-moz-transition:all 0.5s linear;
+-o-transition:all 0.5s linear;
+transition:all 0.5s linear;
+-moz-box-shadow: 2px 2px 4px 0px #006773;
+-webkit-box-shadow:  2px 2px 4px 0px #006773;
+box-shadow: 2px 2px 4px 0px #006773;
+-moz-border-radius:7px 7px 7px 7px ;
+-webkit-border-radius:7px 7px 7px 7px ;
+border-radius:7px 7px 7px 7px ;
+}
+a{
+  text-decoration: none!important;
+}
+</style>
+</head>
+<body>
+
+<button class="accordion">Songs Your Daddy Sang</button>
+<div class="panel title_background">
+  <center>
+    <audio style="width:80%;" id ="audio_source" src = "Frozen2.mp3" controls controlsList="nodownload">
+    </audio>
+  </center>
+  <div class="title_background">
+    <ol>
+        <br>
+        <li> <span id = "audio1">Song Your Daddy Sang</span><a href="./source/Frozen2.mp3" download><button class="download btn btn-sm btn-default">Download</button></a></li><br>
+        <li> <span id = "audio2">Spanish Pipedream</span><a href="./source/1 - Track01.mp3" download><button class="download btn btn-sm btn-default">Download</button></a></li><br>
+        <li> <span id = "audio3">Me and the Elephant</span><a href="./source/2 - Track02.mp3" download><button class="download btn btn-sm btn-default">Download</button></a></li><br>
+        <li> <span id = "audio4">Aw Rats</span><a href="./source/3 - Track03.mp3" download><button class="download btn btn-sm btn-default">Download</button></a></li><br>
+        <li> <span id = "audio5">Sarah Maria</span><a href="./source/4 - Track04.mp3" download><button class="download btn btn-sm btn-default">Download</button></a></li><br>
+        <li> <span id = "audio6">Matthew</span><a href="./source/5 - Track05.mp3" download><button class="download btn btn-sm btn-default">Download</button></a></li><br>
+        <li> <span id = "audio7">He Went to Paris</span><a href="./source/6 - Track06.mp3" download><button class="download btn btn-sm btn-default">Download</button></a></li><br>
+        <li> <span id = "audio8">Spend a Little Time</span><a href="./source/7 - Track07.mp3" download><button class="download btn btn-sm btn-default">Download</button></a></li><br>
+        <li> <span id = "audio9">Time in a Bottle</span><a href="./source/8 - Track08.mp3" download><button class="download btn btn-sm btn-default">Download</button></a></li><br>
+        <li> <span id = "audio10">Souvenirs</span><a href="./source/9 - Track09.mp3" download><button class="download btn btn-sm btn-default">Download</button></a></li>
+        <br>
+    </ol>
+</div>
+</div>
+
+<!-- <button class="accordion">Draw</button>
+<div class="panel">
+  <audio controls>
+    <source src="Frozen2.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<button class="accordion">Pluto</button>
+<div class="panel">
+  <audio controls>
+    <source src="Frozen2.mp3" type="audio/mpeg">
+  </audio>
+</div> -->
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+$("span").click(function(){
+  audio_src = $(this).next();
+  $("#audio_source").attr('src', audio_src[0].href)
+  document.getElementById("audio_source").play()
+})
+</script>
+
+</body>
+</html>
